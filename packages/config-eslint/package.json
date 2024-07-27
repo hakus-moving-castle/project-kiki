@@ -1,5 +1,6 @@
 {
   "name": "@repo/eslint-config",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "files": [
@@ -23,7 +24,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-tailwindcss": "^3.17.3",
     "eslint-plugin-unused-imports": "^3.2.0",
-    "typescript": "^5.3.3",
+    "typescript": "catalog:",
     "eslint-config-airbnb-base": "^15.0.0"
   }
 }
