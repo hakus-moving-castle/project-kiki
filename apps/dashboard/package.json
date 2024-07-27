@@ -37,7 +37,8 @@
     "@types/js-cookie": "^3.0.6",
     "tailwindcss": "^3.4.3",
     "postcss": "^8.4.38",
-    "autoprefixer": "^10.4.19"
+    "autoprefixer": "^10.4.19",
+    "@repo/typescript-config": "workspace:*"
   },
   "refine": {
     "projectId": "Z9HtgO-7L41kc-SkiluH"
