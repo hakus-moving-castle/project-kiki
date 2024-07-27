@@ -1,11 +1,19 @@
 {
   "name": "project-kiki",
   "private": true,
-  "version": "0.0.1",
   "description": "purchasing agent management",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "turbo": "^2.0.9"
+  },
   "packageManager": "pnpm@9.2.0",
   "engines": {
-    "node": "20.10.0"
-  },
-  "scripts": {}
+    "node": ">=20"
+  }
 }
