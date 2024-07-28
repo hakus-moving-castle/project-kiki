@@ -23,6 +23,9 @@ importers:
 
   .:
     devDependencies:
+      dotenv-cli:
+        specifier: ^7.4.2
+        version: 7.4.2
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -56,6 +59,9 @@ importers:
       '@refinedev/supabase':
         specifier: ^5.7.4
         version: 5.9.2(@refinedev/core@4.53.0(@tanstack/react-query@4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@supabase/supabase-js@2.44.4)
+      '@repo/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
       '@supabase/ssr':
         specifier: ^0.3.0
         version: 0.3.0(@supabase/supabase-js@2.44.4)
@@ -107,7 +113,53 @@ importers:
         version: 8.4.40
       tailwindcss:
         specifier: ^3.4.3
-        version: 3.4.7(ts-node@10.9.2(@types/node@18.19.42)(typescript@5.5.4))
+        version: 3.4.7(ts-node@10.9.2(typescript@5.5.4))
+      typescript:
+        specifier: 'catalog:'
+        version: 5.5.4
+
+  apps/server:
+    dependencies:
+      '@logtail/node':
+        specifier: ^0.4.21
+        version: 0.4.21
+      '@logtail/winston':
+        specifier: ^0.4.21
+        version: 0.4.21(winston@3.13.1)
+      '@repo/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
+      express:
+        specifier: ^4.19.2
+        version: 4.19.2
+      winston:
+        specifier: ^3.13.1
+        version: 3.13.1
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/config-typescript
+      '@types/express':
+        specifier: ^4.17.21
+        version: 4.17.21
+      '@types/node':
+        specifier: ^18.16.2
+        version: 18.19.42
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      nodemon:
+        specifier: ^3.1.4
+        version: 3.1.4
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@18.19.42)(typescript@5.5.4)
+      tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0
       typescript:
         specifier: 'catalog:'
         version: 5.5.4
@@ -170,12 +222,21 @@ importers:
 
   packages/logger:
     dependencies:
+      '@logtail/node':
+        specifier: ^0.4.21
+        version: 0.4.21
+      '@logtail/winston':
+        specifier: ^0.4.21
+        version: 0.4.21(winston@3.13.1)
       express:
         specifier: ^4.19.2
         version: 4.19.2
       winston:
         specifier: ^3.13.1
         version: 3.13.1
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
@@ -186,12 +247,18 @@ importers:
       '@types/node':
         specifier: ^18.16.2
         version: 18.19.42
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       nodemon:
         specifier: ^3.1.4
         version: 3.1.4
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@18.19.42)(typescript@5.5.4)
+      tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0
       tsup:
         specifier: ^8.2.3
         version: 8.2.3(jiti@1.21.6)(postcss@8.4.40)(typescript@5.5.4)(yaml@2.5.0)
@@ -617,6 +684,27 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@logtail/core@0.4.21':
+    resolution: {integrity: sha512-QDq194+24bwi4e+a/pxyf4X67NewhTvBmh9iwM2NhbSVSQz4Fo8xQn1Ul8zuUrXETycu/Od2D8wT2tZFNFx/7A==}
+
+  '@logtail/node@0.4.21':
+    resolution: {integrity: sha512-zpwkhJgcYaM+vsjotHRJthc0ot1vP0CAVy+fwrkL8XjfdC3NHiWb6f0agQpHlqdRX8RTsAbcYpWNXKPpFB5U9Q==}
+
+  '@logtail/tools@0.4.21':
+    resolution: {integrity: sha512-xIaolScUwJEikllopGphxBX0lVlN/rA8pLAZiNCMNJXpPbwitoFKLW3w4qRuYdKoFCCJZKwOdwEqU2Fv0i9Cuw==}
+
+  '@logtail/types@0.4.20':
+    resolution: {integrity: sha512-nYsum10eJMTo+ySBlYXvSrvgD1NDCVUeOlxLBbelq3XUmHu9L48VNR3P0BOmhLamYCTEgjatTj0PyPLfjL1W9g==}
+
+  '@logtail/winston@0.4.21':
+    resolution: {integrity: sha512-+aX8VgUJr+YJyHXEPBJR7iv6v3p7YzZgVMicFBiHKf49o9RWgA+QjU5KbyCKTAhHjNm9uYtZhA7vjdg5oO3fQg==}
+    peerDependencies:
+      winston: '>=3.2.1'
+
+  '@msgpack/msgpack@2.8.0':
+    resolution: {integrity: sha512-h9u4u/jiIRKbq25PM+zymTyW6bhTzELvOoUd+AvYriWOAKpLGnIamaET3pnHYoI5iYphAHBI4ayx0MehR+VVPQ==}
+    engines: {node: '>= 10'}
 
   '@next/env@14.2.5':
     resolution: {integrity: sha512-/zZGkrTOsraVfYjGP8uM0p6r0BDT6xWpkjdVbcz66PJVSpwXX3yNiRycxAuDfBKGWBrZBXRuK/YVlkNgxHGwmA==}
@@ -1067,6 +1155,9 @@ packages:
 
   '@types/serve-static@1.15.7':
     resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
+
+  '@types/stack-trace@0.0.29':
+    resolution: {integrity: sha512-TgfOX+mGY/NyNxJLIbDWrO9DjGoVSW9+aB8H2yy1fy32jsvxijhmyJI9fDFgvz3YP4lvJaq9DzdR/M1bOgVc9g==}
 
   '@types/triple-beam@1.3.5':
     resolution: {integrity: sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==}
@@ -1552,6 +1643,9 @@ packages:
     engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
     hasBin: true
 
+  cross-fetch@3.1.8:
+    resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
+
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -1683,6 +1777,14 @@ packages:
   dot-prop@6.0.1:
     resolution: {integrity: sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==}
     engines: {node: '>=10'}
+
+  dotenv-cli@7.4.2:
+    resolution: {integrity: sha512-SbUj8l61zIbzyhIbg0FwPJq6+wjbzdn9oEtozQpZ6kW2ihCcapKVZj49oCT3oPM+mgQm+itgvUQcG5szxVrZTA==}
+    hasBin: true
+
+  dotenv-expand@10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
 
   dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
@@ -3285,6 +3387,10 @@ packages:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
     engines: {node: '>= 0.8.0'}
 
+  serialize-error@8.1.0:
+    resolution: {integrity: sha512-3NnuWfM6vBYoy5gZFvHiYsVbafvI9vZv/+jlIigFn4oP4zjNPK3LhcY0xSCgeb1a5L8jO71Mit9LlNoi2UfDDQ==}
+    engines: {node: '>=10'}
+
   serve-static@1.15.0:
     resolution: {integrity: sha512-XGuRDNjXUijsUL0vl6nSD7cwURuzEgglbOaFuZM9g3kwDXOWVTck0jLzjPzGD+TazWbboZYu52/9/XPdUgne9g==}
     engines: {node: '>= 0.8.0'}
@@ -3564,6 +3670,10 @@ packages:
   tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}
 
+  tsconfig-paths@4.2.0:
+    resolution: {integrity: sha512-NoZ4roiN7LnbKn9QqE1amc9DJfzvZXxF4xDavcOWt1BPkdx+m+0gJuPM+S0vCe7zTJMYUP0R8pO2XMr+Y8oLIg==}
+    engines: {node: '>=6'}
+
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
@@ -3820,6 +3930,9 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
 snapshots:
 
@@ -4255,6 +4368,42 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@logtail/core@0.4.21':
+    dependencies:
+      '@logtail/tools': 0.4.21
+      '@logtail/types': 0.4.20
+      serialize-error: 8.1.0
+
+  '@logtail/node@0.4.21':
+    dependencies:
+      '@logtail/core': 0.4.21
+      '@logtail/types': 0.4.20
+      '@msgpack/msgpack': 2.8.0
+      '@types/stack-trace': 0.0.29
+      cross-fetch: 3.1.8
+      minimatch: 3.1.2
+      serialize-error: 8.1.0
+      stack-trace: 0.0.10
+    transitivePeerDependencies:
+      - encoding
+
+  '@logtail/tools@0.4.21':
+    dependencies:
+      '@logtail/types': 0.4.20
+
+  '@logtail/types@0.4.20': {}
+
+  '@logtail/winston@0.4.21(winston@3.13.1)':
+    dependencies:
+      '@logtail/node': 0.4.21
+      '@logtail/types': 0.4.20
+      winston: 3.13.1
+      winston-transport: 4.7.1
+    transitivePeerDependencies:
+      - encoding
+
+  '@msgpack/msgpack@2.8.0': {}
 
   '@next/env@14.2.5': {}
 
@@ -4732,6 +4881,8 @@ snapshots:
       '@types/http-errors': 2.0.4
       '@types/node': 18.19.42
       '@types/send': 0.17.4
+
+  '@types/stack-trace@0.0.29': {}
 
   '@types/triple-beam@1.3.5': {}
 
@@ -5284,6 +5435,12 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.3
 
+  cross-fetch@3.1.8:
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+
   cross-spawn@7.0.3:
     dependencies:
       path-key: 3.1.1
@@ -5420,6 +5577,15 @@ snapshots:
   dot-prop@6.0.1:
     dependencies:
       is-obj: 2.0.0
+
+  dotenv-cli@7.4.2:
+    dependencies:
+      cross-spawn: 7.0.3
+      dotenv: 16.4.5
+      dotenv-expand: 10.0.0
+      minimist: 1.2.8
+
+  dotenv-expand@10.0.0: {}
 
   dotenv@16.0.3: {}
 
@@ -5816,7 +5982,7 @@ snapshots:
     dependencies:
       fast-glob: 3.3.2
       postcss: 8.4.40
-      tailwindcss: 3.4.7(ts-node@10.9.2(@types/node@18.19.42)(typescript@5.5.4))
+      tailwindcss: 3.4.7(ts-node@10.9.2(typescript@5.5.4))
 
   eslint-plugin-turbo@2.0.9(eslint@8.57.0):
     dependencies:
@@ -6963,7 +7129,7 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.40
 
-  postcss-load-config@4.0.2(postcss@8.4.40)(ts-node@10.9.2(@types/node@18.19.42)(typescript@5.5.4)):
+  postcss-load-config@4.0.2(postcss@8.4.40)(ts-node@10.9.2(typescript@5.5.4)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.0
@@ -7266,6 +7432,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  serialize-error@8.1.0:
+    dependencies:
+      type-fest: 0.20.2
+
   serve-static@1.15.0:
     dependencies:
       encodeurl: 1.0.2
@@ -7468,7 +7638,7 @@ snapshots:
       '@pkgr/core': 0.1.1
       tslib: 2.6.3
 
-  tailwindcss@3.4.7(ts-node@10.9.2(@types/node@18.19.42)(typescript@5.5.4)):
+  tailwindcss@3.4.7(ts-node@10.9.2(typescript@5.5.4)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -7487,7 +7657,7 @@ snapshots:
       postcss: 8.4.40
       postcss-import: 15.1.0(postcss@8.4.40)
       postcss-js: 4.0.1(postcss@8.4.40)
-      postcss-load-config: 4.0.2(postcss@8.4.40)(ts-node@10.9.2(@types/node@18.19.42)(typescript@5.5.4))
+      postcss-load-config: 4.0.2(postcss@8.4.40)(ts-node@10.9.2(typescript@5.5.4))
       postcss-nested: 6.2.0(postcss@8.4.40)
       postcss-selector-parser: 6.1.1
       resolve: 1.22.8
@@ -7574,6 +7744,12 @@ snapshots:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.2
+      minimist: 1.2.8
+      strip-bom: 3.0.0
+
+  tsconfig-paths@4.2.0:
+    dependencies:
+      json5: 2.2.3
       minimist: 1.2.8
       strip-bom: 3.0.0
 
@@ -7855,3 +8031,5 @@ snapshots:
   yn@3.1.1: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@3.23.8: {}
