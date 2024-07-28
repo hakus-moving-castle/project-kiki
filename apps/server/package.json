@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "with-env": "dotenv -e ./.env --",
-    "dev": "pnpm with-env nodemon -r tsconfig-paths/register src/app.ts"
+    "dev": "pnpm with-env nodemon -r tsconfig-paths/register src/app.ts",
+    "lint": "eslint .",
+    "with-env": "dotenv -e ./.env --"
   },
   "dependencies": {
-    "@logtail/node": "^0.4.21",
-    "@logtail/winston": "^0.4.21",
     "express": "^4.19.2",
-    "winston": "^3.13.1",
     "zod": "^3.23.8",
     "@repo/logger": "workspace:*"
   },
@@ -22,6 +20,8 @@
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "eslint": "^8",
+    "@repo/eslint-config": "workspace:*"
   }
 }

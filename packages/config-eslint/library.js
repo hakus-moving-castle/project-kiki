@@ -4,14 +4,6 @@ const project = resolve(process.cwd(), "tsconfig.json");
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  globals: {
-    React: true,
-    JSX: true,
-  },
-  env: {
-    node: true,
-    browser: true,
-  },
   extends: ["airbnb-base", "plugin:prettier/recommended"],
   plugins: ["only-warn"],
   rules: {
@@ -30,7 +22,7 @@ module.exports = {
     {
       files: ["**/*.ts", "**/*.mts"],
       plugins: ["@typescript-eslint", "unused-imports", "simple-import-sort"],
-      extends: ["airbnb-typescript", "plugin:prettier/recommended"],
+      extends: ["airbnb-typescript/base", "plugin:prettier/recommended"],
       parser: "@typescript-eslint/parser",
       parserOptions: { project },
       rules: {
@@ -55,4 +47,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [".*.js", "node_modules/", "dist/"],
 };

@@ -9,7 +9,6 @@ module.exports = {
     JSX: true,
   },
   env: {
-    node: true,
     browser: true,
   },
   plugins: ["only-warn"],
@@ -63,4 +62,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [".*.js", "node_modules/", "dist/"],
 };

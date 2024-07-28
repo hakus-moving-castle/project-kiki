@@ -65,4 +65,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [".*.js", "node_modules/", "dist/"],
 };
