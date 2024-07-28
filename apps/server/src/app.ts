@@ -1,9 +1,11 @@
-const express = require('express');
-const { logger } = require('@repo/logger');
+import { logger, morganMiddleware } from '@repo/logger';
+import express from 'express';
 
 const PORT = process.env.PORT ?? 3000;
 
 const app = express();
+
+app.use(morganMiddleware);
 
 logger.error('logger error message');
 logger.warn('logger warn message');
