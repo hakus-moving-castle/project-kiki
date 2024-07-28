@@ -132,6 +132,9 @@ importers:
 
   apps/server:
     dependencies:
+      '@repo/database':
+        specifier: workspace:*
+        version: link:../../packages/database
       '@repo/logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -235,6 +238,43 @@ importers:
 
   packages/config-typescript: {}
 
+  packages/database:
+    dependencies:
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../config-eslint
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../config-typescript
+      '@types/node':
+        specifier: ^18.19.42
+        version: 18.19.42
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      eslint:
+        specifier: ^8
+        version: 8.57.0
+      nodemon:
+        specifier: ^3.1.4
+        version: 3.1.4
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@18.19.42)(typescript@5.5.4)
+      tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0
+      tsup:
+        specifier: ^8.2.3
+        version: 8.2.3(jiti@1.21.6)(postcss@8.4.40)(typescript@5.5.4)(yaml@2.5.0)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.5.4
+
   packages/logger:
     dependencies:
       '@logtail/node':
@@ -243,9 +283,6 @@ importers:
       '@logtail/winston':
         specifier: ^0.4.21
         version: 0.4.21(winston@3.13.1)
-      express:
-        specifier: ^4.19.2
-        version: 4.19.2
       morgan:
         specifier: ^1.10.0
         version: 1.10.0
@@ -262,9 +299,6 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../config-typescript
-      '@types/express':
-        specifier: ^4.17.21
-        version: 4.17.21
       '@types/morgan':
         specifier: ^1.9.9
         version: 1.9.9
