@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useLogout, useMenu } from "@refinedev/core";
-import Link from "next/link";
+import { useLogout, useMenu } from '@refinedev/core';
+import Link from 'next/link';
 
 export const Menu = () => {
   const { mutate: logout } = useLogout();
@@ -13,8 +13,8 @@ export const Menu = () => {
         {menuItems.map((item) => (
           <li key={item.key}>
             <Link
-              href={item.route ?? "/"}
-              className={selectedKey === item.key ? "active" : ""}
+              href={item.route ?? '/'}
+              className={selectedKey === item.key ? 'active' : ''}
             >
               {item.label}
             </Link>

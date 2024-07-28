@@ -1,6 +1,8 @@
-import { CookieOptions, createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
-import { SUPABASE_KEY, SUPABASE_URL } from "./constants";
+import type { CookieOptions } from '@supabase/ssr';
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+
+import { SUPABASE_KEY, SUPABASE_URL } from './constants';
 
 export const createSupabaseServerClient = () => {
   const cookieStore = cookies();
@@ -21,7 +23,7 @@ export const createSupabaseServerClient = () => {
       },
       remove(name: string, options: CookieOptions) {
         try {
-          cookieStore.set({ name, value: "", ...options });
+          cookieStore.set({ name, value: '', ...options });
         } catch (error) {
           // The `delete` method was called from a Server Component.
           // This can be ignored if you have middleware refreshing

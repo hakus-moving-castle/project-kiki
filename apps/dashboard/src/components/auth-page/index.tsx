@@ -1,6 +1,7 @@
-"use client";
-import { AuthPage as AuthPageBase } from "@refinedev/core";
-import type { AuthPageProps } from "@refinedev/core";
+'use client';
+
+import type { AuthPageProps } from '@refinedev/core';
+import { AuthPage as AuthPageBase } from '@refinedev/core';
 
 export const AuthPage = (props: AuthPageProps) => {
   return (
@@ -11,10 +12,10 @@ export const AuthPage = (props: AuthPageProps) => {
           <p
             style={{
               padding: 10,
-              color: "#004085",
-              backgroundColor: "#cce5ff",
-              borderColor: "#b8daff",
-              textAlign: "center",
+              color: '#004085',
+              backgroundColor: '#cce5ff',
+              borderColor: '#b8daff',
+              textAlign: 'center',
             }}
           >
             email: info@refine.dev

@@ -1,32 +1,34 @@
-"use client";
+'use client';
 
-import { GetManyResponse, useMany, useNavigation } from "@refinedev/core";
-import { useTable } from "@refinedev/react-table";
-import { ColumnDef, flexRender } from "@tanstack/react-table";
-import React from "react";
+import type { GetManyResponse } from '@refinedev/core';
+import { useMany, useNavigation } from '@refinedev/core';
+import { useTable } from '@refinedev/react-table';
+import type { ColumnDef } from '@tanstack/react-table';
+import { flexRender } from '@tanstack/react-table';
+import React from 'react';
 
 export default function BlogPostList() {
   const columns = React.useMemo<ColumnDef<any>[]>(
     () => [
       {
-        id: "id",
-        accessorKey: "id",
-        header: "ID",
+        id: 'id',
+        accessorKey: 'id',
+        header: 'ID',
       },
       {
-        id: "title",
-        accessorKey: "title",
-        header: "Title",
+        id: 'title',
+        accessorKey: 'title',
+        header: 'Title',
       },
       {
-        id: "content",
-        accessorKey: "content",
-        header: "Content",
+        id: 'content',
+        accessorKey: 'content',
+        header: 'Content',
       },
       {
-        id: "category",
-        header: "Category",
-        accessorKey: "categories",
+        id: 'category',
+        header: 'Category',
+        accessorKey: 'categories',
         cell: function render({ getValue, table }) {
           const meta = table.options.meta as {
             categoryData: GetManyResponse;
@@ -34,54 +36,54 @@ export default function BlogPostList() {
 
           try {
             const category = meta.categoryData?.data?.find(
-              (item) => item.id == getValue<any>()?.id
+              (item) => item.id == getValue<any>()?.id,
             );
 
-            return category?.title ?? "Loading...";
+            return category?.title ?? 'Loading...';
           } catch (error) {
             return null;
           }
         },
       },
       {
-        id: "status",
-        accessorKey: "status",
-        header: "Status",
+        id: 'status',
+        accessorKey: 'status',
+        header: 'Status',
       },
       {
-        id: "createdAt",
-        accessorKey: "createdAt",
-        header: "Created At",
+        id: 'createdAt',
+        accessorKey: 'createdAt',
+        header: 'Created At',
         cell: function render({ getValue }) {
           return new Date(getValue<any>()).toLocaleString(undefined, {
-            timeZone: "UTC",
+            timeZone: 'UTC',
           });
         },
       },
       {
-        id: "actions",
-        accessorKey: "id",
-        header: "Actions",
+        id: 'actions',
+        accessorKey: 'id',
+        header: 'Actions',
         cell: function render({ getValue }) {
           return (
             <div
               style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                gap: "4px",
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                gap: '4px',
               }}
             >
               <button
                 onClick={() => {
-                  show("blog_posts", getValue() as string);
+                  show('blog_posts', getValue() as string);
                 }}
               >
                 Show
               </button>
               <button
                 onClick={() => {
-                  edit("blog_posts", getValue() as string);
+                  edit('blog_posts', getValue() as string);
                 }}
               >
                 Edit
@@ -91,7 +93,7 @@ export default function BlogPostList() {
         },
       },
     ],
-    []
+    [],
   );
 
   const { edit, show, create } = useNavigation();
@@ -115,13 +117,13 @@ export default function BlogPostList() {
     columns,
     refineCoreProps: {
       meta: {
-        select: "*, categories(id,title)",
+        select: '*, categories(id,title)',
       },
     },
   });
 
   const { data: categoryData } = useMany({
-    resource: "categories",
+    resource: 'categories',
     ids:
       tableData?.data?.map((item) => item?.categories?.id).filter(Boolean) ??
       [],
@@ -139,18 +141,18 @@ export default function BlogPostList() {
   }));
 
   return (
-    <div style={{ padding: "16px" }}>
+    <div style={{ padding: '16px' }}>
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
       >
-        <h1>{"List"}</h1>
-        <button onClick={() => create("blog_posts")}>{"Create"}</button>
+        <h1>List</h1>
+        <button onClick={() => create('blog_posts')}>Create</button>
       </div>
-      <div style={{ maxWidth: "100%", overflowY: "scroll" }}>
+      <div style={{ maxWidth: '100%', overflowY: 'scroll' }}>
         <table>
           <thead>
             {getHeaderGroups().map((headerGroup) => (
@@ -160,7 +162,7 @@ export default function BlogPostList() {
                     {!header.isPlaceholder &&
                       flexRender(
                         header.column.columnDef.header,
-                        header.getContext()
+                        header.getContext(),
                       )}
                   </th>
                 ))}
@@ -180,33 +182,33 @@ export default function BlogPostList() {
           </tbody>
         </table>
       </div>
-      <div style={{ marginTop: "12px" }}>
+      <div style={{ marginTop: '12px' }}>
         <button
           onClick={() => setPageIndex(0)}
           disabled={!getCanPreviousPage()}
         >
-          {"<<"}
+          {'<<'}
         </button>
         <button onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
-          {"<"}
+          {'<'}
         </button>
         <button onClick={() => nextPage()} disabled={!getCanNextPage()}>
-          {">"}
+          {'>'}
         </button>
         <button
           onClick={() => setPageIndex(getPageCount() - 1)}
           disabled={!getCanNextPage()}
         >
-          {">>"}
+          {'>>'}
         </button>
         <span>
           <strong>
-            {" "}
-            {getState().pagination.pageIndex + 1} / {getPageCount()}{" "}
+            {' '}
+            {getState().pagination.pageIndex + 1} / {getPageCount()}{' '}
           </strong>
         </span>
         <span>
-          | {"Go"}:{" "}
+          | Go:{' '}
           <input
             type="number"
             defaultValue={getState().pagination.pageIndex + 1}
@@ -215,7 +217,7 @@ export default function BlogPostList() {
               setPageIndex(page);
             }}
           />
-        </span>{" "}
+        </span>{' '}
         <select
           value={getState().pagination.pageSize}
           onChange={(e) => {
@@ -224,7 +226,7 @@ export default function BlogPostList() {
         >
           {[10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
-              {"Show"} {pageSize}
+              Show {pageSize}
             </option>
           ))}
         </select>

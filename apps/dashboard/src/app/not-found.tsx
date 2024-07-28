@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import { Suspense } from "react";
-import { ErrorComponent } from "@refinedev/core";
-import { Authenticated } from "@refinedev/core";
+import { Authenticated, ErrorComponent } from '@refinedev/core';
+import { Suspense } from 'react';
 
 export default function NotFound() {
   return (

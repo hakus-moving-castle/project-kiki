@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
 import {
   DevtoolsPanel,
   DevtoolsProvider as DevtoolsProviderBase,
-} from "@refinedev/devtools";
+} from '@refinedev/devtools';
+import React from 'react';
 
 export const DevtoolsProvider = (props: React.PropsWithChildren) => {
   return (
