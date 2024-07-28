@@ -1,0 +1,26 @@
+{
+  "name": "@template/library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.ts",
+  "scripts": {
+    "with-env": "dotenv -e ./.env --",
+    "build": "pnpm with-env tsup src/index.ts --minify --dts --format cjs",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^18.19.42",
+    "dotenv": "^16.4.5",
+    "eslint": "^8",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsup": "^8.2.3",
+    "typescript": "catalog:"
+  }
+}

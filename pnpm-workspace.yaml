@@ -1,6 +1,7 @@
 packages:
-  - "apps/**"
+  - "apps/*"
   - "packages/*"
+  - "templates/*"
 
 catalog:
   "next": "^14.1.0"
