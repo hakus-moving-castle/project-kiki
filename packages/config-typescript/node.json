@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Service",
+  "extends": "./base.json",
+  "compilerOptions": {
+    /* If not transpiling with TypeScript */
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+
+    /* If your code doesn't run in the DOM */
+    "lib": ["es2022"]
+  }
+}

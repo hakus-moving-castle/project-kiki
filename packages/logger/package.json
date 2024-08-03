@@ -2,6 +2,7 @@
   "name": "@repo/logger",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "./src/index.ts",
   "scripts": {
     "with-env": "dotenv -e ./.env --",
@@ -22,9 +23,6 @@
     "@types/node": "^18.19.42",
     "dotenv": "^16.4.5",
     "eslint": "^8",
-    "nodemon": "^3.1.4",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
     "tsup": "^8.2.3",
     "typescript": "catalog:"
   }

@@ -2,20 +2,20 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
-    "outDir": "${configDir}/dist",
-    "declaration": true,
-    "declarationMap": true,
+    /* Base Options */
     "esModuleInterop": true,
-    "incremental": false,
-    "isolatedModules": true,
-    "lib": ["es2022", "DOM", "DOM.Iterable"],
-    "module": "CommonJS",
-    "moduleDetection": "force",
-    "moduleResolution": "Node",
-    "noUncheckedIndexedAccess": true,
-    "resolveJsonModule": true,
     "skipLibCheck": true,
+    "target": "ES2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    /* Strictness */
     "strict": true,
-    "target": "ES2022"
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
