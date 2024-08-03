@@ -20,8 +20,8 @@
     "with-env": "dotenv -e ./.env --",
     "dev:tsc": "tsc --watch --preserveWatchOutput",
     "dev:tsx": "tsx --watch ./src/app.ts",
-    "dev": "pnpm with-env run-p dev:*",
-    "build": "pkgroll",
+    "dev": "cross-env NODE_ENV=development pnpm with-env run-p dev:*",
+    "build": "cross-env NODE_ENV=production pkgroll",
     "lint": "tsc && eslint ."
   },
   "dependencies": {

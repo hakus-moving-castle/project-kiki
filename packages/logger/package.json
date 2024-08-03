@@ -3,11 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "./src/index.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "with-env": "dotenv -e ./.env --",
-    "build": "pnpm with-env tsup src/index.ts --minify --dts --format cjs",
-    "lint": "eslint ."
+    "dev:tsc": "tsc --watch --preserveWatchOutput",
+    "dev:tsx": "tsx --watch ./src/index.ts",
+    "dev": "cross-env NODE_ENV=development pnpm with-env run-p dev:*",
+    "build": "cross-env NODE_ENV=production pkgroll",
+    "lint": "tsc && eslint ."
   },
   "dependencies": {
     "@logtail/node": "^0.4.21",
@@ -23,7 +38,8 @@
     "@types/node": "^18.19.42",
     "dotenv": "^16.4.5",
     "eslint": "^8",
-    "tsup": "^8.2.3",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "pkgroll": "^2.4.2",
+    "tsx": "^4.16.5"
   }
 }

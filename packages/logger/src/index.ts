@@ -1,2 +1,2 @@
-export { logger } from './lib/logger';
-export * from './lib/middlewares';
+export { logger } from '@lib/logger';
+export * from '@lib/middlewares';
