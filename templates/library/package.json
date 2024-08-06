@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@libsql/client": "^0.8.0",
-    "@repo/logger": "workspace:*",
+    "@repo/util-logger": "workspace:*",
     "body-parser": "^1.20.2",
     "drizzle-orm": "^0.32.1",
     "express": "^4.19.2",

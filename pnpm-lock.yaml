@@ -198,60 +198,14 @@ importers:
 
   packages/config-typescript: {}
 
-  packages/logger:
-    dependencies:
-      '@logtail/node':
-        specifier: ^0.4.21
-        version: 0.4.21
-      '@logtail/winston':
-        specifier: ^0.4.21
-        version: 0.4.21(winston@3.13.1)
-      morgan:
-        specifier: ^1.10.0
-        version: 1.10.0
-      winston:
-        specifier: ^3.13.1
-        version: 3.13.1
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../config-eslint
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../config-typescript
-      '@types/morgan':
-        specifier: ^1.9.9
-        version: 1.9.9
-      '@types/node':
-        specifier: ^18.19.42
-        version: 18.19.42
-      dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
-      eslint:
-        specifier: ^8
-        version: 8.57.0
-      pkgroll:
-        specifier: ^2.4.2
-        version: 2.4.2(typescript@5.5.4)
-      tsx:
-        specifier: ^4.16.5
-        version: 4.16.5
-      typescript:
-        specifier: 'catalog:'
-        version: 5.5.4
-
   packages/service-store:
     dependencies:
       '@prisma/client':
         specifier: 5.17.0
         version: 5.17.0(prisma@5.17.0)
-      '@repo/logger':
+      '@repo/util-logger':
         specifier: workspace:*
-        version: link:../logger
+        version: link:../util-logger
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -302,14 +256,60 @@ importers:
         specifier: 'catalog:'
         version: 5.5.4
 
+  packages/util-logger:
+    dependencies:
+      '@logtail/node':
+        specifier: ^0.4.21
+        version: 0.4.21
+      '@logtail/winston':
+        specifier: ^0.4.21
+        version: 0.4.21(winston@3.13.1)
+      morgan:
+        specifier: ^1.10.0
+        version: 1.10.0
+      winston:
+        specifier: ^3.13.1
+        version: 3.13.1
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../config-eslint
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../config-typescript
+      '@types/morgan':
+        specifier: ^1.9.9
+        version: 1.9.9
+      '@types/node':
+        specifier: ^18.19.42
+        version: 18.19.42
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      eslint:
+        specifier: ^8
+        version: 8.57.0
+      pkgroll:
+        specifier: ^2.4.2
+        version: 2.4.2(typescript@5.5.4)
+      tsx:
+        specifier: ^4.16.5
+        version: 4.16.5
+      typescript:
+        specifier: 'catalog:'
+        version: 5.5.4
+
   templates/library:
     dependencies:
       '@libsql/client':
         specifier: ^0.8.0
         version: 0.8.0
-      '@repo/logger':
+      '@repo/util-logger':
         specifier: workspace:*
-        version: link:../../packages/logger
+        version: link:../../packages/util-logger
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2

@@ -1,5 +1,5 @@
 import { env } from '@config';
-import { logger, morganMiddleware } from '@repo/logger';
+import { logger, morganMiddleware } from '@repo/util-logger';
 import bodyParser from 'body-parser';
 import express from 'express';
 
