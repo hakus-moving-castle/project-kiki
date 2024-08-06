@@ -1,11 +1,80 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Prisma docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
+// Copy output and preview in https://dbdiagram.io/d
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Store {
+  id        String    @id @default(cuid())
+  name      String
+  userId    String // From external service
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([name])
+}
+
+model Source {
+  id        String    @id @default(cuid())
+  name      String
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id         String     @id @default(cuid())
+  name       String
+  price      Int
+  categories Category[]
+  options    Option[]
+  store      Store      @relation(fields: [storeId], references: [id])
+  storeId    String
+  source     Source     @relation(fields: [sourceId], references: [id])
+  sourceId   String
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+
+  @@index([name])
+}
+
+model Option {
+  id        String         @id @default(cuid())
+  name      String
+  product   Product        @relation(fields: [productId], references: [id])
+  productId String
+  options   Option_Value[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@unique([productId, name])
+}
+
+model Option_Value {
+  name      String
+  option    Option   @relation(fields: [optionId], references: [id])
+  optionId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([optionId, name])
 }
