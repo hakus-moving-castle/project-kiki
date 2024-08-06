@@ -12,8 +12,9 @@ export const prettify = combine(
   colorize({ all: true }),
   align(),
   printf((info) => {
+    const service = info.service ? `[${info.service.toUpperCase()}]` : '';
     const stack = info.stack ? `\n${info.stack}` : '';
-    return `[${info.timestamp}] ${info.level}: ${info.message} ${stack}`;
+    return `[${info.timestamp}] ${service} ${info.level}: ${info.message} ${stack}`;
   }),
 );
 

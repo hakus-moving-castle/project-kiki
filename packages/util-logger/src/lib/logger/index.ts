@@ -11,3 +11,7 @@ export const logger = winston.createLogger({
   format: toJson,
   transports: isProd ? logtailTransport : consoleTransport,
 });
+
+export const createLogger = (service: string) => {
+  return logger.child({ service });
+};
