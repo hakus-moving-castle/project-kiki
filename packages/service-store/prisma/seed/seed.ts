@@ -5,16 +5,16 @@
  * ! Make sure to adjust the script to your needs.
  * docs: https://docs.snaplet.dev/seed/getting-started/overview
  */
-import { createSeedClient } from '@snaplet/seed';
+// import { createSeedClient } from '@snaplet/seed';
 
-const main = async () => {
-  const seed = await createSeedClient();
+// const main = async () => {
+//   const seed = await createSeedClient();
 
-  await seed.$resetDatabase();
+//   await seed.$resetDatabase();
 
-  console.log('Database seeded successfully!');
+//   console.log('Database seeded successfully!');
 
-  process.exit();
-};
+//   process.exit();
+// };
 
-main();
+// main();

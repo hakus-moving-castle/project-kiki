@@ -17,28 +17,29 @@
     }
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development pnpm with-env run-p dev:*",
+    "dev": "pnpm with-env:dev run-p dev:*",
     "dev:tsc": "tsc --watch --preserveWatchOutput",
     "dev:tsx": "tsx --watch ./src/app.ts",
-    "db:up": "docker-compose up",
-    "db:migrate": "prisma migrate dev",
-    "postdb:migrate": "npx @snaplet/seed sync",
+    "db:dev:migrate": "pnpm with-env:dev prisma migrate dev",
+    "postdb:dev:migrate": "pnpm with-env:dev npx @snaplet/seed sync",
+    "db:prod:migrate": "pnpm with-env:prod prisma migrate deploy",
+    "db:dev:studio": "pnpm with-env:dev prisma studio",
     "db:generate": "prisma generate",
-    "db:studio": "prisma studio",
-    "build": "cross-env NODE_ENV=production pkgroll",
-    "lint": "tsc && eslint .",
-    "with-env": "dotenv -e ./.env --"
-  },
-  "prisma": {
-    "seed": "tsx prisma/seed/seed.ts"
+    "build": "pnpm with-env:prod pkgroll",
+    "lint": "eslint .",
+    "with-env:dev": "cross-env NODE_ENV=development dotenv -e ./.env.local --",
+    "with-env:prod": "cross-env NODE_ENV=production"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.9.4",
+    "@prisma/adapter-neon": "^5.18.0",
     "@prisma/client": "5.17.0",
     "@repo/util-logger": "workspace:*",
     "body-parser": "^1.20.2",
     "drizzle-orm": "^0.32.1",
     "express": "^4.19.2",
     "prisma-client": "^0.0.0",
+    "ws": "^8.18.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -49,6 +50,7 @@
     "@types/body-parser": "^1.19.5",
     "@types/express": "^4.17.21",
     "@types/node": "^18.19.42",
+    "@types/ws": "^8.5.12",
     "dotenv": "^16.4.5",
     "eslint": "^8",
     "pkgroll": "^2.4.2",
@@ -56,6 +58,9 @@
     "prisma-dbml-generator": "^0.12.0",
     "tsx": "^4.16.5",
     "typescript": "catalog:"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed/seed.ts"
   },
   "@snaplet/seed": {
     "config": "prisma/seed/seed.config.ts"

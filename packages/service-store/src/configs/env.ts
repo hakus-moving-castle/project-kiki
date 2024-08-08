@@ -5,6 +5,8 @@ export const SERVICE = 'STORE';
 const envSchema = z.object({
   PORT: z.string().default('3000'),
   NODE_ENV: z.string().default('development'),
+  DATABASE_URL: z.string(),
+  DIRECT_URL: z.string(),
 });
 
 const env = envSchema.parse(process.env);
