@@ -5,18 +5,29 @@
 			"dependsOn": ["^build"],
 			"outputs": [".next/**", "!.next/cache/**"]
 		},
+
 		"dev": {
 			"persistent": true,
 			"cache": false
 		},
+
 		"test": {},
 		"test:watch": {
 			"cache": false,
 			"persistent": true
 		},
+
+		"check-types": {
+			"dependsOn": ["topo"]
+		},
+
 		"//#format-and-lint": {},
 		"//#format-and-lint:fix": {
 			"cache": false
+		},
+
+		"topo": {
+			"dependsOn": ["^topo"]
 		}
 	}
 }
