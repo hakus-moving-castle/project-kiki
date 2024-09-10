@@ -1,17 +1,28 @@
 {
-  "name": "project-kiki",
-  "private": true,
-  "description": "",
-  "scripts": {
-    "prepare": "husky"
-  },
-  "packageManager": "pnpm@9.6.0",
-  "engines": {
-    "node": "20.10.0"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.4.1",
-    "@commitlint/config-conventional": "^19.4.1",
-    "husky": "^9.1.5"
-  }
+	"name": "project-kiki",
+	"private": true,
+	"description": "",
+	"scripts": {
+		"format-and-lint": "biome check .",
+		"format-and-lint:fix": "biome check . --write",
+		"prepare": "husky"
+	},
+	"packageManager": "pnpm@9.6.0",
+	"engines": {
+		"node": "20.10.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@commitlint/cli": "^19.4.1",
+		"@commitlint/config-conventional": "^19.4.1",
+		"husky": "^9.1.5",
+		"lint-staged": "^15.2.10"
+	},
+	"lint-staged": {
+		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+			"biome check --files-ignore-unknown=true --write --no-errors-on-unmatched",
+			"biome format --write --no-errors-on-unmatched",
+			"biome lint --write --no-errors-on-unmatched"
+		]
+	}
 }
