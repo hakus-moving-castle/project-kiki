@@ -21,8 +21,8 @@
 			"dependsOn": ["topo"]
 		},
 
-		"//#format-and-lint": {},
-		"//#format-and-lint:fix": {
+		"//#lint": {},
+		"//#lint:fix": {
 			"cache": false
 		},
 
