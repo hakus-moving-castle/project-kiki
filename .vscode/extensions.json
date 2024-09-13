@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"github.vscode-github-actions",
+		"biomejs.biome",
+		"yoavbls.pretty-ts-errors",
+		"streetsidesoftware.code-spell-checker",
+		"gruntfuggly.todo-tree"
+	]
+}
