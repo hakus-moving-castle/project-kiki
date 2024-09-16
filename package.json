@@ -3,6 +3,7 @@
 	"private": true,
 	"description": "",
 	"scripts": {
+		"dev": "turbo dev",
 		"check-types": "turbo check-types",
 		"lint": "biome check .",
 		"lint:fix": "biome check . --write",

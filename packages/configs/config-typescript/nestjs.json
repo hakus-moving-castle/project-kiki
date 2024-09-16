@@ -12,6 +12,7 @@
 		"outDir": "${configDir}/dist",
 		"baseUrl": "${configDir}/",
 		"incremental": true,
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"watchFile": "fixedPollingInterval"
 	}
 }
