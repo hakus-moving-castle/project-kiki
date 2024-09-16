@@ -14,7 +14,11 @@
 		"noUncheckedIndexedAccess": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"strictBindCallApply": true,
 		"strict": true,
-		"target": "ES2022"
+		"target": "ES2022",
+		"noFallthroughCasesInSwitch": true
 	}
 }

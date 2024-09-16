@@ -1,0 +1,17 @@
+{
+	"display": "Nest.js",
+	"extends": "./base.json",
+	"compilerOptions": {
+		"module": "commonjs",
+		"moduleResolution": " node",
+		"removeComments": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"sourceMap": true,
+		"outDir": "${configDir}/dist",
+		"baseUrl": "${configDir}/",
+		"incremental": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}
