@@ -14,5 +14,10 @@
 	},
 	"formatter": {
 		"formatWithErrors": true
+	},
+	"javascript": {
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		}
 	}
 }
