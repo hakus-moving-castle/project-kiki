@@ -35,7 +35,7 @@ importers:
 
   packages/configs/config-typescript: {}
 
-  packages/services/service-user:
+  packages/services/service-users:
     dependencies:
       '@nestjs/common':
         specifier: ^10.3.2
