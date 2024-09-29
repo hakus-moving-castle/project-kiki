@@ -1,4 +1,4 @@
-import { VERSIONS } from "@/constants/versions";
+import { VERSIONS } from "@common/constants/versions";
 import { Controller, Get } from "@nestjs/common";
 import { UsersService } from "./users.service";
 
