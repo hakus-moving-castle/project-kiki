@@ -1,19 +1,19 @@
 {
-	"name": "@kiki/service-users",
+	"name": "service-users",
 	"private": true,
 	"version": "0.0.0",
 	"description": "",
 	"scripts": {
 		"dev": "nest start --watch",
 		"dev:debug": "nest start --debug --watch",
+		"db:studio": "drizzle-kit studio",
 		"build": "nest build",
 		"start:prod": "node dist/main",
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"test:cov": "jest --coverage",
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/jest/bin/jest --runInBand",
-		"test:e2e": "jest --config ./test/jest-e2e.json",
-		"studio": "drizzle-kit studio"
+		"test:e2e": "jest --config ./test/jest-e2e.json"
 	},
 	"dependencies": {
 		"@neondatabase/serverless": "^0.9.5",
