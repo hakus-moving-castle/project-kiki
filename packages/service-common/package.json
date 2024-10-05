@@ -7,7 +7,8 @@
 	},
 	"devDependencies": {
 		"@kiki/typescript-config": "workspace:*",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"@types/node": "catalog:"
 	},
 	"exports": {
 		"./constants": "./src/constants.ts"
