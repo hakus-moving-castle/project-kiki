@@ -1,0 +1,3 @@
+{
+	"extends": "@kiki/typescript-config/base.json"
+}
