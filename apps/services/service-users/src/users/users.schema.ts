@@ -5,3 +5,6 @@ export const users = pgTable("users", {
 	email: text("email").notNull().unique(),
 	password: text("password").notNull(),
 });
+
+export type UserInsert = typeof users.$inferInsert;
+export type UserSelect = typeof users.$inferSelect;
