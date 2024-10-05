@@ -8,7 +8,7 @@ import {
 	Post,
 } from "@nestjs/common";
 
-import { VERSIONS } from "@common/constants/versions";
+import { VERSIONS } from "@kiki/service-common/constants";
 import { CreateUserDto } from "./dtos/create-user.dto";
 import { UpdateUserDto } from "./dtos/update-user.dto";
 import { UsersService } from "./users.service";
