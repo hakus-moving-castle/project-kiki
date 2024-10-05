@@ -5,12 +5,20 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"scripts": {
+		"build": "tsup src/constants.ts --minify --dts --format cjs,esm --out-dir dist"
+	},
 	"devDependencies": {
 		"@kiki/typescript-config": "workspace:*",
-		"typescript": "catalog:",
-		"@types/node": "catalog:"
+		"@types/node": "catalog:",
+		"tsup": "^8.3.0",
+		"typescript": "catalog:"
 	},
 	"exports": {
-		"./constants": "./src/constants.ts"
+		"./constants": {
+			"types": "./dist/constants.d.ts",
+			"import": "./dist/constants.mjs",
+			"require": "./dist/constants.js"
+		}
 	}
 }
