@@ -20,32 +20,32 @@ import { UsersService } from "./users.service";
 export class UsersController {
 	constructor(private readonly usersService: UsersService) {}
 
-	@Get()
-	async getUsers() {
-		const users = await this.usersService.getUsers();
-		return users;
-	}
-
-	@Get(":id")
-	async getUser(@Param("id") id: string) {
-		const user = await this.usersService.getUserById(Number.parseInt(id));
-		return user;
-	}
-
 	@Post()
-	async createUser(@Body() body: CreateUserDto) {
+	async create(@Body() body: CreateUserDto) {
 		const user = await this.usersService.createUser(body);
 		return user;
 	}
 
+	@Get()
+	async findMany() {
+		const users = await this.usersService.findUsers();
+		return users;
+	}
+
+	@Get(":id")
+	async findOne(@Param("id") id: string) {
+		const user = await this.usersService.findUserById(Number.parseInt(id));
+		return user;
+	}
+
 	@Patch(":id")
-	async updateUser(@Param("id") id: string, @Body() body: UpdateUserDto) {
+	async update(@Param("id") id: string, @Body() body: UpdateUserDto) {
 		const user = await this.usersService.updateUser(Number.parseInt(id), body);
 		return user;
 	}
 
 	@Delete(":id")
-	async deleteUser(@Param("id") id: string) {
+	async delete(@Param("id") id: string) {
 		const user = await this.usersService.deleteUser(Number.parseInt(id));
 		return user;
 	}

@@ -11,12 +11,21 @@ export class UsersService {
 		private readonly drizzleService: DrizzleService<typeof usersSchema>,
 	) {}
 
-	async getUsers(): Promise<UserSelect[]> {
+	async createUser(user: UserInsert): Promise<UserInsert> {
+		const newUser = await this.drizzleService.db
+			.insert(usersSchema.users)
+			.values(user)
+			.returning();
+		// @ts-expect-error throw error if user is not found
+		return newUser[0];
+	}
+
+	async findUsers(): Promise<UserSelect[]> {
 		const users = await this.drizzleService.db.select().from(usersSchema.users);
 		return users;
 	}
 
-	async getUserById(id: UserSelect["id"]): Promise<UserSelect> {
+	async findUserById(id: UserSelect["id"]): Promise<UserSelect> {
 		const user = await this.drizzleService.db
 			.select()
 			.from(usersSchema.users)
@@ -25,7 +34,7 @@ export class UsersService {
 		return user[0];
 	}
 
-	async getUserByEmail(email: UserSelect["email"]): Promise<UserSelect> {
+	async findUserByEmail(email: UserSelect["email"]): Promise<UserSelect> {
 		const { password, ...rest } = getTableColumns(usersSchema.users);
 		const user = await this.drizzleService.db
 			.select({ ...rest })
@@ -33,15 +42,6 @@ export class UsersService {
 			.where(eq(usersSchema.users.email, email));
 		// @ts-expect-error throw error if user is not found
 		return user[0];
-	}
-
-	async createUser(user: UserInsert): Promise<UserInsert> {
-		const newUser = await this.drizzleService.db
-			.insert(usersSchema.users)
-			.values(user)
-			.returning();
-		// @ts-expect-error throw error if user is not found
-		return newUser[0];
 	}
 
 	async updateUser(
