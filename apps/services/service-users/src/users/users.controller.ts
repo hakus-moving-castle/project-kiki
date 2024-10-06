@@ -2,8 +2,13 @@ import { Controller } from "@nestjs/common";
 import { MessagePattern, Payload } from "@nestjs/microservices";
 
 import { VERSIONS } from "@kiki/service-common/constants";
-import { CreateUserDto } from "./dtos/create-user.dto";
-import { UpdateUserDto } from "./dtos/update-user.dto";
+import {
+	CreateUserDto,
+	type FindOneUserDto,
+	RemoveUserDto,
+	USERS_PATTERNS,
+	UpdateUserDto,
+} from "@kiki/service-contracts";
 import { UsersService } from "./users.service";
 
 @Controller({
@@ -13,34 +18,36 @@ import { UsersService } from "./users.service";
 export class UsersController {
 	constructor(private readonly usersService: UsersService) {}
 
-	@MessagePattern("users.create")
-	async create(@Payload() createUserDto: CreateUserDto) {
-		const user = await this.usersService.createUser(createUserDto);
-		return user;
+	@MessagePattern(USERS_PATTERNS.CREATE)
+	async create(@Payload() dto: CreateUserDto) {
+		const created = await this.usersService.create(dto);
+		return created;
 	}
 
-	@MessagePattern("users.findMany")
-	async findMany() {
-		const users = await this.usersService.findUsers();
+	@MessagePattern(USERS_PATTERNS.FIND_ALL)
+	async findAll() {
+		const users = await this.usersService.findAll();
 		return users;
 	}
 
-	@MessagePattern("users.findOne")
-	async findOne(@Payload() id: number) {
-		const user = await this.usersService.findUserById(id);
+	@MessagePattern(USERS_PATTERNS.FIND_ONE)
+	async findOne(@Payload() dto: FindOneUserDto) {
+		const { id } = dto;
+		const user = await this.usersService.findById(id);
 		return user;
 	}
 
-	@MessagePattern("users.update")
-	async update(@Payload() updateUserDto: UpdateUserDto) {
-		const { id, ...update } = updateUserDto;
-		const user = await this.usersService.updateUser(id, update);
-		return user;
+	@MessagePattern(USERS_PATTERNS.UPDATE)
+	async update(@Payload() dto: UpdateUserDto) {
+		const { id, ...data } = dto;
+		const updated = await this.usersService.update(id, data);
+		return updated;
 	}
 
-	@MessagePattern("users.delete")
-	async delete(@Payload() id: number) {
-		const user = await this.usersService.deleteUser(id);
-		return user;
+	@MessagePattern(USERS_PATTERNS.REMOVE)
+	async remove(@Payload() dto: RemoveUserDto) {
+		const { id } = dto;
+		const removed = await this.usersService.remove(id);
+		return removed;
 	}
 }
