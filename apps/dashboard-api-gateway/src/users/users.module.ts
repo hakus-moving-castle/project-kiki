@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ClientsModule, Transport } from "@nestjs/microservices";
 
+import { USERS_CLIENT } from "./constants";
 import { UsersController } from "./users.controller";
 import { UsersService } from "./users.service";
 
@@ -8,7 +9,7 @@ import { UsersService } from "./users.service";
 	imports: [
 		ClientsModule.register([
 			{
-				name: "USERS_CLIENT",
+				name: USERS_CLIENT,
 				transport: Transport.TCP,
 				options: {
 					port: 3001,

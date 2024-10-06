@@ -11,13 +11,14 @@ import {
 	USERS_PATTERNS,
 } from "@kiki/service-contracts";
 
+import { USERS_CLIENT } from "./constants";
 import { CreateUserDto } from "./dtos/create-users.dto";
 import { UpdateUserDto } from "./dtos/update-users.dto";
 
 @Injectable()
 export class UsersService {
 	constructor(
-		@Inject("USERS_CLIENT") private readonly usersClient: ClientProxy,
+		@Inject(USERS_CLIENT) private readonly usersClient: ClientProxy,
 	) {}
 
 	create(user: CreateUserDto) {
