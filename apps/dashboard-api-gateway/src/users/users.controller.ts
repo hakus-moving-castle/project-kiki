@@ -8,15 +8,18 @@ import {
 	Post,
 } from "@nestjs/common";
 
+import { Serialize } from "@common/interceptors/serialize.interceptor";
 import { VERSIONS } from "@kiki/service-common/constants";
 import { CreateUserDto } from "./dtos/create-users.dto";
 import { UpdateUserDto } from "./dtos/update-users.dto";
+import { UserDto } from "./dtos/user.dto";
 import { UsersService } from "./users.service";
 
 @Controller({
 	path: "users",
 	version: VERSIONS.V1,
 })
+@Serialize(UserDto)
 export class UsersController {
 	constructor(private readonly usersService: UsersService) {}
 
