@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@kiki/service-common": "workspace:*",
+		"@kiki/service-contracts": "workspace:*",
 		"@nestjs/common": "^10.3.2",
 		"@nestjs/config": "^3.2.3",
 		"@nestjs/core": "^10.3.2",

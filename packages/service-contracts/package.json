@@ -6,17 +6,16 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "tsup src/index.ts --minify --dts --format cjs,esm --out-dir dist"
+		"build": "tsup src/users/index.ts --minify --dts --format cjs,esm --out-dir dist"
 	},
 	"dependencies": {
-		"@nestjs/common": "^10.3.2"
+		"class-validator": "^0.14.1"
 	},
 	"devDependencies": {
 		"@kiki/typescript-config": "workspace:*",
 		"@types/node": "catalog:",
 		"tsup": "^8.3.0",
-		"typescript": "catalog:",
-		"@nestjs/testing": "^10.3.2"
+		"typescript": "catalog:"
 	},
 	"exports": {
 		".": {
