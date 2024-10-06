@@ -1,4 +1,8 @@
-import { INestApplication, VersioningType } from "@nestjs/common";
+import {
+	INestApplication,
+	ValidationPipe,
+	VersioningType,
+} from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import cookieParser from "cookie-parser";
 import { AppModule } from "./app.module";
@@ -9,6 +13,7 @@ export function setupApp(app: INestApplication) {
 		type: VersioningType.URI,
 		prefix: false,
 	});
+	app.useGlobalPipes(new ValidationPipe());
 }
 
 async function bootstrap() {
