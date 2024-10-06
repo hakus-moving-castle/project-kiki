@@ -1,23 +1,25 @@
 import { Module } from "@nestjs/common";
-import { ClientsModule, Transport } from "@nestjs/microservices";
+import { ClientProxyFactory } from "@nestjs/microservices";
 
+import { ClientConfigModule } from "@client-config/client-config.module";
+import { ClientConfigService } from "@client-config/client-config.service";
 import { USERS_CLIENT } from "./constants";
 import { UsersController } from "./users.controller";
 import { UsersService } from "./users.service";
 
 @Module({
-	imports: [
-		ClientsModule.register([
-			{
-				name: USERS_CLIENT,
-				transport: Transport.TCP,
-				options: {
-					port: 3001,
-				},
-			},
-		]),
-	],
+	imports: [ClientConfigModule],
 	controllers: [UsersController],
-	providers: [UsersService],
+	providers: [
+		UsersService,
+		{
+			provide: USERS_CLIENT,
+			useFactory: (clientConfigService: ClientConfigService) => {
+				const clientOptions = clientConfigService.usersClientOptions;
+				return ClientProxyFactory.create(clientOptions);
+			},
+			inject: [ClientConfigService],
+		},
+	],
 })
 export class UsersModule {}
