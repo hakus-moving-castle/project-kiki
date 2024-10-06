@@ -1,4 +1,5 @@
 export * from "./users.patterns";
+export * from "./users.errors";
 
 export * from "./dtos/user.dto";
 export * from "./dtos/create-user.dto";

@@ -9,6 +9,7 @@
 		"build": "tsup"
 	},
 	"dependencies": {
+		"@nestjs/common": "^10.3.2",
 		"class-validator": "^0.14.1"
 	},
 	"devDependencies": {
@@ -22,6 +23,11 @@
 			"types": "./dist/common.d.ts",
 			"import": "./dist/common.mjs",
 			"require": "./dist/common.js"
+		},
+		"./auth": {
+			"types": "./dist/auth.d.ts",
+			"import": "./dist/auth.mjs",
+			"require": "./dist/auth.js"
 		},
 		"./users": {
 			"types": "./dist/users.d.ts",
