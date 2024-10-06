@@ -1,0 +1,28 @@
+{
+	"name": "@kiki/service-contracts",
+	"version": "0.0.0",
+	"description": "",
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsup src/index.ts --minify --dts --format cjs,esm --out-dir dist"
+	},
+	"dependencies": {
+		"@nestjs/common": "^10.3.2"
+	},
+	"devDependencies": {
+		"@kiki/typescript-config": "workspace:*",
+		"@types/node": "catalog:",
+		"tsup": "^8.3.0",
+		"typescript": "catalog:",
+		"@nestjs/testing": "^10.3.2"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/constants.d.ts",
+			"import": "./dist/constants.mjs",
+			"require": "./dist/constants.js"
+		}
+	}
+}
