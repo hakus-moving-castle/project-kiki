@@ -6,7 +6,7 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "tsup src/constants.ts --minify --dts --format cjs,esm --out-dir dist"
+		"build": "tsup"
 	},
 	"devDependencies": {
 		"@kiki/typescript-config": "workspace:*",

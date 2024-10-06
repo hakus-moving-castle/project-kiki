@@ -6,7 +6,7 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "tsup src/users/index.ts --minify --dts --format cjs,esm --out-dir dist"
+		"build": "tsup"
 	},
 	"dependencies": {
 		"class-validator": "^0.14.1"
@@ -19,9 +19,9 @@
 	},
 	"exports": {
 		".": {
-			"types": "./dist/constants.d.ts",
-			"import": "./dist/constants.mjs",
-			"require": "./dist/constants.js"
+			"types": "./dist/users.d.ts",
+			"import": "./dist/users.mjs",
+			"require": "./dist/users.js"
 		}
 	}
 }
