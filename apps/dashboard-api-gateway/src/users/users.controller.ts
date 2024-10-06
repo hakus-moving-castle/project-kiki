@@ -27,8 +27,8 @@ export class UsersController {
 	}
 
 	@Get()
-	findMany() {
-		const users = this.usersService.findMany();
+	findAll() {
+		const users = this.usersService.findAll();
 		return users;
 	}
 
@@ -45,8 +45,8 @@ export class UsersController {
 	}
 
 	@Delete(":id")
-	delete(@Param("id") id: string) {
-		const user = this.usersService.delete(id);
+	remove(@Param("id") id: string) {
+		const user = this.usersService.remove(id);
 		return user;
 	}
 }

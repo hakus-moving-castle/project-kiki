@@ -1,6 +1,16 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { ClientProxy } from "@nestjs/microservices";
 
+import {
+	CreateUserDto as ClientCreateUserDto,
+	FindAllUsersDto as ClientFindAllUsersDto,
+	FindOneUserDto as ClientFindOneUserDto,
+	RemoveUserDto as ClientRemoveUserDto,
+	UpdateUserDto as ClientUpdateUserDto,
+	UserDto as ClientUserDto,
+	USERS_PATTERNS,
+} from "@kiki/service-contracts";
+
 import { CreateUserDto } from "./dtos/create-users.dto";
 import { UpdateUserDto } from "./dtos/update-users.dto";
 
@@ -11,25 +21,44 @@ export class UsersService {
 	) {}
 
 	create(user: CreateUserDto) {
-		return this.usersClient.send("users.create", user);
+		return this.usersClient.send<ClientUserDto, ClientCreateUserDto>(
+			USERS_PATTERNS.CREATE,
+			user,
+		);
 	}
 
-	findMany() {
-		return this.usersClient.send("users.findMany", {});
+	findAll() {
+		return this.usersClient.send<ClientUserDto, ClientFindAllUsersDto>(
+			USERS_PATTERNS.FIND_ALL,
+			{},
+		);
 	}
 
 	findOne(id: string) {
-		return this.usersClient.send("users.findOne", Number.parseInt(id));
+		return this.usersClient.send<ClientUserDto, ClientFindOneUserDto>(
+			USERS_PATTERNS.FIND_ONE,
+			{
+				id: Number.parseInt(id),
+			},
+		);
 	}
 
 	update(id: string, user: UpdateUserDto) {
-		return this.usersClient.send("users.update", {
-			id: Number.parseInt(id),
-			...user,
-		});
+		return this.usersClient.send<ClientUserDto, ClientUpdateUserDto>(
+			USERS_PATTERNS.UPDATE,
+			{
+				id: Number.parseInt(id),
+				...user,
+			},
+		);
 	}
 
-	delete(id: string) {
-		return this.usersClient.send("users.delete", Number.parseInt(id));
+	remove(id: string) {
+		return this.usersClient.send<ClientUserDto, ClientRemoveUserDto>(
+			USERS_PATTERNS.REMOVE,
+			{
+				id: Number.parseInt(id),
+			},
+		);
 	}
 }
