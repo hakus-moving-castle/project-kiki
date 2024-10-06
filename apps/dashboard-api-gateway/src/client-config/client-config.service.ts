@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { ClientOptions, Transport } from "@nestjs/microservices";
 
+@Injectable()
 export class ClientConfigService {
 	constructor(private configService: ConfigService) {}
 
