@@ -1,12 +1,5 @@
-import {
-	Body,
-	Controller,
-	Delete,
-	Get,
-	Param,
-	Patch,
-	Post,
-} from "@nestjs/common";
+import { Controller } from "@nestjs/common";
+import { MessagePattern, Payload } from "@nestjs/microservices";
 
 import { VERSIONS } from "@kiki/service-common/constants";
 import { CreateUserDto } from "./dtos/create-user.dto";
@@ -20,33 +13,34 @@ import { UsersService } from "./users.service";
 export class UsersController {
 	constructor(private readonly usersService: UsersService) {}
 
-	@Post()
-	async create(@Body() body: CreateUserDto) {
-		const user = await this.usersService.createUser(body);
+	@MessagePattern("users.create")
+	async create(@Payload() createUserDto: CreateUserDto) {
+		const user = await this.usersService.createUser(createUserDto);
 		return user;
 	}
 
-	@Get()
+	@MessagePattern("users.findMany")
 	async findMany() {
 		const users = await this.usersService.findUsers();
 		return users;
 	}
 
-	@Get(":id")
-	async findOne(@Param("id") id: string) {
-		const user = await this.usersService.findUserById(Number.parseInt(id));
+	@MessagePattern("users.findOne")
+	async findOne(@Payload() id: number) {
+		const user = await this.usersService.findUserById(id);
 		return user;
 	}
 
-	@Patch(":id")
-	async update(@Param("id") id: string, @Body() body: UpdateUserDto) {
-		const user = await this.usersService.updateUser(Number.parseInt(id), body);
+	@MessagePattern("users.update")
+	async update(@Payload() updateUserDto: UpdateUserDto) {
+		const { id, ...update } = updateUserDto;
+		const user = await this.usersService.updateUser(id, update);
 		return user;
 	}
 
-	@Delete(":id")
-	async delete(@Param("id") id: string) {
-		const user = await this.usersService.deleteUser(Number.parseInt(id));
+	@MessagePattern("users.delete")
+	async delete(@Payload() id: number) {
+		const user = await this.usersService.deleteUser(id);
 		return user;
 	}
 }

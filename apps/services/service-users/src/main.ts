@@ -1,18 +1,18 @@
-import { INestApplication, VersioningType } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
+import { MicroserviceOptions, Transport } from "@nestjs/microservices";
 import { AppModule } from "./app.module";
 
-export function setupApp(app: INestApplication) {
-	app.enableVersioning({
-		type: VersioningType.URI,
-		prefix: false,
-	});
-}
-
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule);
-	setupApp(app);
-	await app.listen(3000);
+	const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+		AppModule,
+		{
+			transport: Transport.TCP,
+			options: {
+				port: 3001,
+			},
+		},
+	);
+	await app.listen();
 }
 
 bootstrap();

@@ -6,13 +6,7 @@ import {
 	IsString,
 } from "class-validator";
 
-import type { UserSelect } from "@users/users.schema";
-
-export class UpdateUserDto implements Partial<UserSelect> {
-	@IsNumber()
-	@IsNotEmpty()
-	id!: number;
-
+export class UpdateUserDto {
 	@IsEmail()
 	@IsOptional()
 	email!: string;
