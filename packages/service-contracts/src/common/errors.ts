@@ -7,7 +7,7 @@ export type RpcError = {
 	data?: Record<string, unknown>;
 };
 
-export const COMMON_ERROR_CODES: Record<string, RpcError> = {
+export const COMMON_ERROR_CODES = {
 	INTERNAL_SERVER_ERROR: {
 		code: "INTERNAL_SERVER_ERROR",
 		message: "Internal server error",
@@ -53,4 +53,4 @@ export const COMMON_ERROR_CODES: Record<string, RpcError> = {
 		message: "Too many requests",
 		httpStatus: HttpStatus.TOO_MANY_REQUESTS,
 	},
-};
+} satisfies Record<string, RpcError>;

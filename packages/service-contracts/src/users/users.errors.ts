@@ -1,7 +1,7 @@
 import { HttpStatus } from "@nestjs/common";
-import { RpcError } from "src/common";
+import { RpcError } from "../common/errors";
 
-export const USERS_ERROR_CODES: Record<string, RpcError> = {
+export const USERS_ERROR_CODES = {
 	USER_ALREADY_EXISTS: {
 		code: "USER_ALREADY_EXISTS",
 		message: "User already exists",
@@ -37,4 +37,4 @@ export const USERS_ERROR_CODES: Record<string, RpcError> = {
 		message: "User does not have permission to perform this action",
 		httpStatus: HttpStatus.FORBIDDEN,
 	},
-};
+} satisfies Record<string, RpcError>;

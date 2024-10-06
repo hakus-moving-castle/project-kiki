@@ -1,7 +1,7 @@
 import { HttpStatus } from "@nestjs/common";
-import { RpcError } from "src/common";
+import { RpcError } from "../common/errors";
 
-export const AUTH_ERROR_CODES: Record<string, RpcError> = {
+export const AUTH_ERROR_CODES = {
 	INVALID_AUTH_TOKEN: {
 		code: "INVALID_AUTH_TOKEN",
 		message: "Invalid authentication token",
@@ -17,4 +17,4 @@ export const AUTH_ERROR_CODES: Record<string, RpcError> = {
 		message: "User password is too weak",
 		httpStatus: HttpStatus.BAD_REQUEST,
 	},
-};
+} satisfies Record<string, RpcError>;
