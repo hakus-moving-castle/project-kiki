@@ -3,6 +3,7 @@
 	"private": true,
 	"description": "",
 	"scripts": {
+		"dashboard": "turbo dev --filter=dashboard-* --filter=service-*",
 		"dev": "turbo dev",
 		"build": "turbo build",
 		"test": "turbo test",
