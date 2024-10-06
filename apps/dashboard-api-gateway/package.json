@@ -15,7 +15,6 @@
 		"test:e2e": "jest --config ./test/jest-e2e.json"
 	},
 	"dependencies": {
-		"@kiki/service-common": "workspace:*",
 		"@kiki/service-contracts": "workspace:*",
 		"@nestjs/common": "^10.3.2",
 		"@nestjs/config": "^3.2.3",

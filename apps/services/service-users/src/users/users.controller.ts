@@ -1,14 +1,14 @@
 import { Controller } from "@nestjs/common";
 import { MessagePattern, Payload } from "@nestjs/microservices";
 
-import { VERSIONS } from "@kiki/service-common/constants";
+import { VERSIONS } from "@kiki/service-contracts";
 import {
 	CreateUserDto,
 	type FindOneUserDto,
 	RemoveUserDto,
 	USERS_PATTERNS,
 	UpdateUserDto,
-} from "@kiki/service-contracts";
+} from "@kiki/service-contracts/users";
 import { UsersService } from "./users.service";
 
 @Controller({

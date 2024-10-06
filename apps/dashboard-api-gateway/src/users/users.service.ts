@@ -9,7 +9,7 @@ import {
 	UpdateUserDto as ClientUpdateUserDto,
 	UserDto as ClientUserDto,
 	USERS_PATTERNS,
-} from "@kiki/service-contracts";
+} from "@kiki/service-contracts/users";
 
 import { USERS_CLIENT } from "./constants";
 import { CreateUserDto } from "./dtos/create-users.dto";

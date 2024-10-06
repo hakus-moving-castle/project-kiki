@@ -9,7 +9,7 @@ import {
 } from "@nestjs/common";
 
 import { Serialize } from "@common/interceptors/serialize.interceptor";
-import { VERSIONS } from "@kiki/service-common/constants";
+import { VERSIONS } from "@kiki/service-contracts";
 import { CreateUserDto } from "./dtos/create-users.dto";
 import { UpdateUserDto } from "./dtos/update-users.dto";
 import { UserDto } from "./dtos/user.dto";

@@ -19,6 +19,11 @@
 	},
 	"exports": {
 		".": {
+			"types": "./dist/common.d.ts",
+			"import": "./dist/common.mjs",
+			"require": "./dist/common.js"
+		},
+		"./users": {
 			"types": "./dist/users.d.ts",
 			"import": "./dist/users.mjs",
 			"require": "./dist/users.js"
