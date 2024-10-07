@@ -33,7 +33,7 @@ export class UsersController {
 	@MessagePattern(USERS_PATTERNS.FIND_ONE)
 	async findOne(@Payload() dto: FindOneUserDto) {
 		const { id } = dto;
-		const user = await this.usersService.findById(id);
+		const user = await this.usersService.findOne(id);
 		return user;
 	}
 

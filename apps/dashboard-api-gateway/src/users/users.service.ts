@@ -1,6 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { ClientProxy } from "@nestjs/microservices";
 
+import { catchRpcError } from "@common/utils/errors.utils";
 import {
 	CreateUserDto as ClientCreateUserDto,
 	FindAllUsersDto as ClientFindAllUsersDto,
@@ -10,7 +11,6 @@ import {
 	UserDto as ClientUserDto,
 	USERS_PATTERNS,
 } from "@kiki/service-contracts/users";
-
 import { USERS_CLIENT } from "./constants";
 import { CreateUserDto } from "./dtos/create-users.dto";
 import { UpdateUserDto } from "./dtos/update-users.dto";
@@ -22,44 +22,39 @@ export class UsersService {
 	) {}
 
 	create(user: CreateUserDto) {
-		return this.usersClient.send<ClientUserDto, ClientCreateUserDto>(
-			USERS_PATTERNS.CREATE,
-			user,
-		);
+		return this.usersClient
+			.send<ClientUserDto, ClientCreateUserDto>(USERS_PATTERNS.CREATE, user)
+			.pipe(catchRpcError());
 	}
 
 	findAll() {
-		return this.usersClient.send<ClientUserDto, ClientFindAllUsersDto>(
-			USERS_PATTERNS.FIND_ALL,
-			{},
-		);
+		return this.usersClient
+			.send<ClientUserDto, ClientFindAllUsersDto>(USERS_PATTERNS.FIND_ALL, {})
+			.pipe(catchRpcError());
 	}
 
 	findOne(id: string) {
-		return this.usersClient.send<ClientUserDto, ClientFindOneUserDto>(
-			USERS_PATTERNS.FIND_ONE,
-			{
+		return this.usersClient
+			.send<ClientUserDto, ClientFindOneUserDto>(USERS_PATTERNS.FIND_ONE, {
 				id: Number.parseInt(id),
-			},
-		);
+			})
+			.pipe(catchRpcError());
 	}
 
 	update(id: string, user: UpdateUserDto) {
-		return this.usersClient.send<ClientUserDto, ClientUpdateUserDto>(
-			USERS_PATTERNS.UPDATE,
-			{
+		return this.usersClient
+			.send<ClientUserDto, ClientUpdateUserDto>(USERS_PATTERNS.UPDATE, {
 				id: Number.parseInt(id),
 				...user,
-			},
-		);
+			})
+			.pipe(catchRpcError());
 	}
 
 	remove(id: string) {
-		return this.usersClient.send<ClientUserDto, ClientRemoveUserDto>(
-			USERS_PATTERNS.REMOVE,
-			{
+		return this.usersClient
+			.send<ClientUserDto, ClientRemoveUserDto>(USERS_PATTERNS.REMOVE, {
 				id: Number.parseInt(id),
-			},
-		);
+			})
+			.pipe(catchRpcError());
 	}
 }

@@ -5,6 +5,8 @@ import {
 } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import cookieParser from "cookie-parser";
+
+import { RpcExceptionFilter } from "@common/filters/rpc-execption.filter";
 import { AppModule } from "./app.module";
 
 export function setupApp(app: INestApplication) {
@@ -14,6 +16,7 @@ export function setupApp(app: INestApplication) {
 		prefix: false,
 	});
 	app.useGlobalPipes(new ValidationPipe());
+	app.useGlobalFilters(new RpcExceptionFilter());
 }
 
 async function bootstrap() {
